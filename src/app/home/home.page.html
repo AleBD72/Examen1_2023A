@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Instrumentos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ios list-ios hydrated">
+    <ion-list-header class="ios hydrated">
+      Instrumentos
+    </ion-list-header>
+    <ion-item *ngFor="let instrumento of Instrumentos" class="user-list">
+      <ion-label>
+        <h5>
+          <ion-icon name="headset"></ion-icon> {{instrumento.nombre}}
+        </h5>
+        <p>
+         {{instrumento.categoria}}
+        </p>
+        <p>
+          {{instrumento.marca}}
+        </p>
+        <p>
+          {{instrumento.descripcion}}
+        </p>
+      </ion-label>
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/edit-appointment/', instrumento.$key]">
+          <ion-icon name="create" style="zoom:2.0"></ion-icon>
+        </button>
+        <button ion-button clear (click)="deleteIns(instrumento.$key)">
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+      </div>
+    </ion-item>
+  </ion-list>
